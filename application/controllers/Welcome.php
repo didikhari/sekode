@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
         $data = array(
                 'title' => 'DidikH'
             );
-        $this->load_template('login', 'form-login', $data);
+        $this->template->load('login', 'form-login', $data);
 	}
     
 }
