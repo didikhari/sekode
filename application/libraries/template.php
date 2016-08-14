@@ -33,7 +33,7 @@
              $data->body = $body;
         }
       }
-   $this->ci->load->view('templates/'.$tpl_view, $data);
+      $this->ci->load->view('templates/'.$tpl_view, $data);
     }
    }
    ?>
