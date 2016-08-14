@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+
+    public function __construct(){
+        $this->load->model('loginDao');
+    }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,12 +22,14 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index(){
         $data = array(
                 'title' => 'DidikH'
             );
         $this->template->load('login', 'form-login', $data);
 	}
     
+    public function login(){
+        
+    }
 }
