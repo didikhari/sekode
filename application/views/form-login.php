@@ -20,7 +20,7 @@
 	</div>
 	<div class="create-account">
 		<p>
-			
+			<a href="<?php echo base_url(); ?>welcome/forgot-password">Forgot Password</a>
 		</p>
 	</div>
 </form>

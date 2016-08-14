@@ -5,7 +5,9 @@ class Welcome extends CI_Controller {
 
 
     public function __construct(){
+        parent ::__construct();
         $this->load->model('loginDao');
+        $this->load->library('encryption');
     }
 	/**
 	 * Index Page for this controller.
@@ -30,6 +32,17 @@ class Welcome extends CI_Controller {
 	}
     
     public function login(){
+        
+    }
+    
+    public function forgot_password(){
+        $data = array(
+                'title' => 'Forgot Password'
+            );
+        $this->template->load('login', 'forgot-password', $data);
+    }
+    
+    public function change_password(){
         
     }
 }
