@@ -3,9 +3,9 @@
     
     class LoginDao extends CI_Model{
         
-        public function getLoginUser($username, $password){
-            $this->db->distinct();
-            $query = $this->db->get_where('s_user', array('id' => $username, 'password' => $password));
+        public function getUserById($username){
+            $this->db->where('id', $username);       
+            $query = $this->db->get('s_user');
             return $query->result();
         }
     }

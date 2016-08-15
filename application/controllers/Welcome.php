@@ -32,7 +32,29 @@ class Welcome extends CI_Controller {
 	}
     
     public function login(){
-        
+        $usr = $this->input->post('username');
+        $pwd = $this->input->post('password');
+        $result = $this->loginDao->getUserById($usr);
+        print_r($result);
+        if(isset($result)){
+            $storedPwd = $result[0]->PASSWORD;
+            echo $storedPwd;
+            echo $this->encryption->decrypt($storedPwd);
+            die;
+            $this->session->set_userdata('user_data', $result);
+            $this->session->set_userdata('is_log_in', true);
+            
+            $data = array(
+                'title' => 'DidikH'
+            );
+            $this->template->load('dashboard', 'welcome_message', $data);
+        }
+        $this->index();
+    }
+    
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('welcome/index', 'refresh');
     }
     
     public function forgot_password(){

@@ -1,5 +1,5 @@
 <!-- BEGIN LOGIN FORM -->
-<form class="login-form" action="<?php echo base_url() ?>welcome/login" method="post">
+<form class="login-form" action="<?php echo base_url() ?>index.php/welcome/login" method="post">
 	<h3 class="form-title">Sign In</h3>
 	<div class="alert alert-danger display-hide">
 		<button class="close" data-close="alert"></button>
