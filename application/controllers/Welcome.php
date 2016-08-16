@@ -9,21 +9,7 @@ class Welcome extends CI_Controller {
         $this->load->model('loginDao');
         $this->load->library('encryption');
     }
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index(){
         $data = array(
                 'title' => 'DidikH'
@@ -35,21 +21,24 @@ class Welcome extends CI_Controller {
         $usr = $this->input->post('username');
         $pwd = $this->input->post('password');
         $result = $this->loginDao->getUserById($usr);
-        print_r($result);
         if(isset($result)){
             $storedPwd = $result[0]->PASSWORD;
-            echo $storedPwd;
-            echo $this->encryption->decrypt($storedPwd);
-            die;
-            $this->session->set_userdata('user_data', $result);
-            $this->session->set_userdata('is_log_in', true);
-            
-            $data = array(
-                'title' => 'DidikH'
-            );
-            $this->template->load('dashboard', 'welcome_message', $data);
-        }
-        $this->index();
+            $decryptedPwd = $this->encryption->decrypt($storedPwd);
+            if($decryptedPwd == $pwd){
+                
+                $this->session->set_userdata('user_data', $result);
+                $this->session->set_userdata('is_log_in', true);
+                
+                $data = array(
+                    'title' => 'DidikH'
+                );
+                $this->template->load('dashboard', 'welcome_message', $data);
+            }else{
+                $this->index();
+            }
+        }else{
+            $this->index();
+        }        
     }
     
     public function logout(){
