@@ -1,5 +1,5 @@
 	<!-- BEGIN FORGOT PASSWORD FORM -->
-	<form class="forget-form" action="index.html" method="post">
+	<form class="forget-form" action="<?php echo base_url(); ?>welcome/send-mail-password" method="post">
 		<h3>Forget Password ?</h3>
 		<p>
 			 Enter your e-mail address below to reset your password.

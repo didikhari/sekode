@@ -81,7 +81,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="<?php echo base_url();?>assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/login.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
@@ -89,8 +88,17 @@ jQuery(document).ready(function() {
     Metronic.init(); // init metronic core components
     Layout.init(); // init current layout
     Login.init();
-    Demo.init();
 });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var error = '<?php echo $error; ?>';
+        if(error){
+            $('div.alert').css('display', 'block');
+            $('div.alert span').text(error);
+        }
+    });
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

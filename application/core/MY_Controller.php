@@ -13,25 +13,10 @@
         
         protected function is_logged_in(){
             $login = $this->session->userdata('is_log_in');
-			$user = $this->session->userdata('user');
-            
-			if(!isset($login) || $login != TRUE){
-				redirect('welcome/index', 'refresh');
+			$user = $this->session->userdata('user_data');
+			if(!isset($login) && $login != TRUE){
+				redirect('login', 'refresh');
 			}
-        }
-        
-        protected function welcome(){
-            $data = array(
-                'title' => 'Hijab Cantik',
-                'user' => $this->session->userdata('user_data'),            
-            );
-            $this->load->library('template');
-            $this->template->load('default', 'home', $data);
-        }
-        
-        protected function load_template($template, $page, $data){            
-            $this->load->library('template');
-            $this->template->load($template, $page, $data);
         }
         
         protected function generate_file_download($file_name, $file_content){            
@@ -49,7 +34,6 @@
             }
             
             $this->email->from($from_mail, $name);
-            // $array_mail_dest=array('one@example.com', 'two@example.com', 'three@example.com');
             $this->email->to($array_mail_dest); 
             $this->email->cc($cc);
             $this->email->bcc($bcc);
