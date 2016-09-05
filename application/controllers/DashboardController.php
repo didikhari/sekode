@@ -74,5 +74,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $foundChild;
         }
         
+        public function test(){
+        	echo "testing";
+        }           
     }
 ?>
